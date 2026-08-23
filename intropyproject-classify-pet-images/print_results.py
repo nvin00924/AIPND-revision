@@ -31,24 +31,22 @@
 #       Notice that this function doesn't to return anything because it  
 #       prints a summary of the results using results_dic and results_stats_dic
 # 
-def print_results(results_dic, results_stats_dic, model, 
-                  print_incorrect_dogs = False, print_incorrect_breed = False):
+def print_results(results_dic, results_stats_dic, model, print_incorrect_dogs = False, print_incorrect_breed = False):
 
-    print("\n\n*** Results Summary for CNN Model Architecture", model.upper(), "***")
-    print("{:<20}: {:>3}".format('N Images', results_stats_dic['n_images']))
-    print("{:<20}: {:>3}".format('N Dog Images', results_stats_dic['n_dogs_img']))
-    print("{:<20}: {:>3}".format('N Not-Dog Images', results_stats_dic['n_notdogs_img']))
+  print("\n\n*** Results Summary for CNN Model Architecture", model.upper(), "***")
+  print("{:<20}: {:>3}".format('N Images', results_stats_dic['n_images']))
+  print("{:<20}: {:>3}".format('N Dog Images', results_stats_dic['n_dogs_img']))
+  print("{:<20}: {:>3}".format('N Not-Dog Images', results_stats_dic['n_notdogs_img']))
 
   
-    print("\nSummary Statistics (Percentages):")
-    for key in results_stats_dic:
-        if key.startswith('p'):
-            print("{:<25}: {:.2f}%".format(key, results_stats_dic[key]))
+  print("\nSummary Statistics (Percentages):")
+  for key in results_stats_dic:
+    if key.startswith('p'):
+      print("{:<25}: {:.2f}%".format(key, results_stats_dic[key]))
             
    
-    if (print_incorrect_dogs and 
-        (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] != results_stats_dic['n_images'])):
-        print("\nINCORRECT Dog Classification:")
+  if (print_incorrect_dogs and (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] != results_stats_dic['n_images'])):
+    print("\nINCORRECT Dog Classification:")
 
        
     for key in results_dic:
@@ -57,8 +55,7 @@ def print_results(results_dic, results_stats_dic, model,
         print("Real Label: {:>26}   Classifier Label: {:>30}".format(results_dic[key][0], results_dic[key][1]))
 
   
-  if (print_incorrect_breed and 
-        (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
+if (print_incorrect_breed and (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
     print("\nINCORRECT Dog Breed Classification:")
 
     for key in results_dic:
