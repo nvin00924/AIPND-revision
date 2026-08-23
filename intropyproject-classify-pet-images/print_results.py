@@ -45,20 +45,20 @@ def print_results(results_dic, results_stats_dic, model, print_incorrect_dogs = 
       print("{:<25}: {:.2f}%".format(key, results_stats_dic[key]))
             
    
-  if (print_incorrect_dogs and (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] != results_stats_dic['n_images'])):
-    print("\nINCORRECT Dog Classification:")
+    if (print_incorrect_dogs and (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] != results_stats_dic['n_images'])):
+        print("\nINCORRECT Dog Classification:")
 
        
-    for key in results_dic:
+        for key in results_dic:
          
-      if sum(results_dic[key][3:]) == 1:
-        print("Real Label: {:>26}   Classifier Label: {:>30}".format(results_dic[key][0], results_dic[key][1]))
+            if sum(results_dic[key][3:]) == 1:
+                print("Real Label: {:>26}   Classifier Label: {:>30}".format(results_dic[key][0], results_dic[key][1]))
 
   
-if (print_incorrect_breed and (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
-    print("\nINCORRECT Dog Breed Classification:")
+    if (print_incorrect_breed and (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])):
+        print("\nINCORRECT Dog Breed Classification:")
 
-    for key in results_dic:
+        for key in results_dic:
             # Both are dogs, but the breeds do not match
-      if sum(results_dic[key][3:]) == 2 and results_dic[key][2] == 0:
-        print("Real Label: {:>26}   Classifier Label: {:>30}".format(results_dic[key][0], results_dic[key][1]))
+            if sum(results_dic[key][3:]) == 2 and results_dic[key][2] == 0:
+                print("Real Label: {:>26}   Classifier Label: {:>30}".format(results_dic[key][0], results_dic[key][1]))
